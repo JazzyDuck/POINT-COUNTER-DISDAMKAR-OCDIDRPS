@@ -13,7 +13,6 @@
       padding: 30px;
     }
 
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -36,7 +35,6 @@
       margin: 0;
     }
 
-    /* INPUT */
     .time-group {
       margin: 15px 0;
     }
@@ -65,13 +63,11 @@
       background: #ffb84d;
     }
 
-    /* RESULT */
     .result {
       margin-top: 25px;
       font-size: 20px;
     }
 
-    /* FOOTER */
     .footer {
       position: fixed;
       bottom: 10px;
@@ -84,15 +80,13 @@
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <img src="https://raw.githubusercontent.com/JazzyDuck/POINT-COUNTER-DISDAMKAR-OCDIDRPS/main/logo.png" class="logo">
   <h1>ON DUTY POINT CALCULATOR DISDAMKAR OCDIDRP</h1>
 </div>
 
-<!-- INPUT -->
 <div class="time-group">
-  <label>Jam Mulai:</label><br>
+  <label>Start Time:</label><br>
   <input type="time" id="start">
   <select id="startAmPm">
     <option>AM</option>
@@ -101,7 +95,7 @@
 </div>
 
 <div class="time-group">
-  <label>Jam Selesai:</label><br>
+  <label>End Time:</label><br>
   <input type="time" id="end">
   <select id="endAmPm">
     <option>AM</option>
@@ -109,12 +103,10 @@
   </select>
 </div>
 
-<button onclick="hitung()">Hitung</button>
+<button onclick="hitung()">Calculate</button>
 
-<!-- RESULT -->
 <div class="result" id="output"></div>
 
-<!-- FOOTER -->
 <div class="footer">
   made by ramoz ganteng
 </div>
@@ -136,14 +128,13 @@ function hitung() {
   let endAmPm = document.getElementById("endAmPm").value;
 
   if (!start || !end) {
-    alert("Isi jam dulu!");
+    alert("Please fill in the time!");
     return;
   }
 
   let startMin = convertToMinutes(start, startAmPm);
   let endMin = convertToMinutes(end, endAmPm);
 
-  // Support lewat tengah malam
   if (endMin <= startMin) {
     endMin += 24 * 60;
   }
@@ -153,7 +144,7 @@ function hitung() {
   let sisa = diff % 30;
 
   document.getElementById("output").innerText =
-    "Durasi: " + diff + " menit | Poin: " + points + " | Sisa: " + sisa + " menit";
+    "Duration: " + diff + " minutes | Points: " + points + " | Remaining: " + sisa + " minutes";
 }
 </script>
 
