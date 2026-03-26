@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Poin Duty DISDAMKAR OCDIDRP</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Kalkulator Poin Duty DISDAMKAR OCDIDRP</h1>
+
+<div>
+  <label>Jam Mulai:</label><br>
+  <input type="time" id="start">
+</div>
+
+<div>
+  <label>Jam Selesai:</label><br>
+  <input type="time" id="end">
+</div>
+
+<br>
+<button onclick="hitung()">Hitung Poin</button>
+
+<div class="result" id="output"></div>
+
+<script>
+function hitung() {
+  let start = document.getElementById("start").value;
+  let end = document.getElementById("end").value;
+
+  if (!start || !end) {
+    alert("Isi jam dulu!");
+    return;
+  }
+
+  let startTime = new Date("1970-01-01T" + start + ":00");
+  let endTime = new Date("1970-01-01T" + end + ":00");
+
+  let diff = (endTime - startTime) / 1000; // detik
+
+  if (diff <= 0) {
+    document.getElementById("output").innerText = "Jam tidak valid!";
+    return;
+  }
+
+  let minutes = diff / 60;
+  let points = Math.floor(minutes / 30);
+
+  document.getElementById("output").innerText =
+    "Durasi: " + minutes + " menit | Poin: " + points;
+}
+</script>
+
+</body>
+</html>
